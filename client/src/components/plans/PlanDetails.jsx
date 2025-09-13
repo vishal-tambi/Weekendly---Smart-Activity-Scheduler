@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { plansAPI } from '../../services/api';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
-import ActivityCard from '../activities/Activitycard';
+import ActivityCard from '../activities/ActivityCard';
 import ExportModal from '../share/ExportModal';
 import * as Icons from 'lucide-react';
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useWeekend } from '../../contexts/WeekendContext';
-import ActivityCard from './Activitycard';
+import ActivityCard from './ActivityCard';
 import ActivityFilters from './ActivityFilters';
 import Button from '../ui/Button';
 import * as Icons from 'lucide-react';
