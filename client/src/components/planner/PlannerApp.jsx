@@ -28,30 +28,32 @@ const PlannerApp = () => {
             {/* Header */}
             <header className="bg-white shadow-sm border-b border-gray-200">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-col space-y-4 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
                         <div className="flex items-center space-x-3">
                             <button
                                 onClick={() => navigate('/')}
                                 className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
                             >
-                                <Icons.Calendar className="text-primary-600" size={32} />
-                                <h1 className="text-2xl font-bold text-gray-900">Weekendly</h1>
+                                <Icons.Calendar className="text-primary-600" size={28} />
+                                <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Weekendly</h1>
                             </button>
                         </div>
 
-                        <div className="flex items-center space-x-4">
+                        <div className="flex flex-col space-y-3 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-4">
+                            {/* Plan Title Input */}
                             <input
                                 type="text"
                                 placeholder="Plan title..."
                                 value={currentPlan.title}
                                 onChange={(e) => updatePlanField('title', e.target.value)}
-                                className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 min-w-48"
+                                className="w-full sm:w-48 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
                             />
 
+                            {/* Theme Selector */}
                             <select
                                 value={currentPlan.theme}
                                 onChange={(e) => updatePlanField('theme', e.target.value)}
-                                className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
+                                className="w-full sm:w-auto px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
                             >
                                 {themes.map(theme => (
                                     <option key={theme.value} value={theme.value}>
@@ -60,20 +62,41 @@ const PlannerApp = () => {
                                 ))}
                             </select>
 
-                            <Button variant="outline" onClick={() => navigate('/plans')}>
-                                <Icons.BookOpen className="mr-2" size={16} />
-                                My Plans
-                            </Button>
+                            {/* Action Buttons - Hidden on mobile, shown in a separate row */}
+                            <div className="hidden sm:flex items-center space-x-2">
+                                <Button variant="outline" onClick={() => navigate('/plans')} className="text-sm">
+                                    <Icons.BookOpen className="mr-1 sm:mr-2" size={14} />
+                                    <span className="hidden sm:inline">My Plans</span>
+                                </Button>
 
-                            <Button onClick={handleSavePlan}>
-                                <Icons.Save className="mr-2" size={16} />
-                                Save Plan
-                            </Button>
+                                <Button onClick={handleSavePlan} className="text-sm">
+                                    <Icons.Save className="mr-1 sm:mr-2" size={14} />
+                                    <span className="hidden sm:inline">Save</span>
+                                </Button>
 
-                            <Button variant="outline" onClick={clearPlan}>
-                                <Icons.RotateCcw className="mr-2" size={16} />
-                                Clear
-                            </Button>
+                                <Button variant="outline" onClick={clearPlan} className="text-sm">
+                                    <Icons.RotateCcw className="mr-1 sm:mr-2" size={14} />
+                                    <span className="hidden sm:inline">Clear</span>
+                                </Button>
+                            </div>
+
+                            {/* Mobile Action Buttons */}
+                            <div className="flex sm:hidden space-x-2">
+                                <Button variant="outline" onClick={() => navigate('/plans')} className="flex-1 text-sm">
+                                    <Icons.BookOpen className="mr-1" size={14} />
+                                    Plans
+                                </Button>
+
+                                <Button onClick={handleSavePlan} className="flex-1 text-sm">
+                                    <Icons.Save className="mr-1" size={14} />
+                                    Save
+                                </Button>
+
+                                <Button variant="outline" onClick={clearPlan} className="flex-1 text-sm">
+                                    <Icons.RotateCcw className="mr-1" size={14} />
+                                    Clear
+                                </Button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -82,31 +105,28 @@ const PlannerApp = () => {
             <Breadcrumbs />
 
             {/* Main Content */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-                    {/* Left Sidebar - Activities */}
-                    <div className="lg:col-span-2">
-                        <div className="sticky top-8 space-y-6">
-                            <div>
-                                <h2 className="text-xl font-semibold text-gray-900 mb-6">
-                                    Available Activities
-                                </h2>
-                                <ActivityList />
-                            </div>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
+                <div className="space-y-6 lg:space-y-0 lg:grid lg:grid-cols-12 lg:gap-8">
+                    {/* Activities Section */}
+                    <div className="lg:col-span-4">
+                        <div className="lg:sticky lg:top-8">
+                            <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4 sm:mb-6">
+                                Available Activities
+                            </h2>
+                            <ActivityList />
                         </div>
                     </div>
 
-                    {/* Middle - Schedule */}
-                    <div className="lg:col-span-2">
+                    {/* Schedule Section */}
+                    <div className="lg:col-span-5">
                         <WeekendSchedule />
                     </div>
 
-                    {/* Right Sidebar - AI Assistant */}
-                    {/* Right Sidebar - AI Assistant */}
-                    <div className="lg:col-span-1 lg:min-w-[80rem]"> {/* Set minimum width */}
-                        <div className="sticky top-8">
-                            <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                                <Icons.Bot className="mr-2" size={24} />
+                    {/* AI Assistant Section */}
+                    <div className="lg:col-span-3">
+                        <div className="lg:sticky lg:top-8">
+                            <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4 sm:mb-6 flex items-center">
+                                <Icons.Bot className="mr-2" size={20} sm:size={24} />
                                 AI Assistant
                             </h2>
                             <AIPlanningAssistant />
