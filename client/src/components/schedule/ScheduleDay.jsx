@@ -26,7 +26,7 @@ const ScheduleDay = ({ day, dayName }) => {
           {activities.map((item, index) => {
             const IconComponent = Icons[item.activity?.icon] || Icons.Calendar;
             return (
-              <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+              <div key={index} className="flex flex-col gap-2 p-3 bg-gray-50 rounded-lg">
                 <div className="flex items-center space-x-3">
                   <IconComponent size={20} className="text-gray-600" />
                   <div>
@@ -38,7 +38,6 @@ const ScheduleDay = ({ day, dayName }) => {
                     </p>
                   </div>
                 </div>
-                
                 <div className="flex items-center space-x-2">
                   <input
                     type="time"

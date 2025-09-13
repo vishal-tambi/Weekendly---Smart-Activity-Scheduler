@@ -74,7 +74,7 @@ const PlanDetails = () => {
               </button>
             </div>
             
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2">
               <Button variant="outline" onClick={() => navigate('/plans')}>
                 <Icons.ArrowLeft className="mr-2" size={16} />
                 Back to Plans

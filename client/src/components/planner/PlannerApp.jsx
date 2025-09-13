@@ -22,12 +22,13 @@ const PlannerApp = () => {
         await savePlan();
         navigate('/plans');
     };
-
+    // Increase max-width for the main container
+    // Change max-w-7xl to max-w-[1600px] for more horizontal space 
     return (
         <div className="min-h-screen bg-gray-50">
             {/* Header */}
             <header className="bg-white shadow-sm border-b border-gray-200">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-4">
                     <div className="flex flex-col space-y-4 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
                         <div className="flex items-center space-x-3">
                             <button
@@ -105,31 +106,37 @@ const PlannerApp = () => {
             <Breadcrumbs />
 
             {/* Main Content */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
-                <div className="space-y-6 lg:space-y-0 lg:grid lg:grid-cols-12 lg:gap-8">
+            <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 overflow-hidden">
+                <div className="space-y-6 lg:space-y-0 lg:grid lg:grid-cols-12 lg:gap-8 min-h-0">
                     {/* Activities Section */}
-                    <div className="lg:col-span-4">
-                        <div className="lg:sticky lg:top-8">
+                    <div className="lg:col-span-4 min-w-0">
+                        <div className="lg:sticky lg:top-8 overflow-hidden">
                             <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4 sm:mb-6">
                                 Available Activities
                             </h2>
-                            <ActivityList />
+                            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 max-h-[calc(100vh-12rem)] overflow-y-auto">
+                                <ActivityList />
+                            </div>
                         </div>
                     </div>
 
                     {/* Schedule Section */}
-                    <div className="lg:col-span-5">
-                        <WeekendSchedule />
+                    <div className="lg:col-span-4 min-w-0 overflow-hidden">
+                        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 overflow-hidden">
+                            <WeekendSchedule />
+                        </div>
                     </div>
 
-                    {/* AI Assistant Section */}
-                    <div className="lg:col-span-3">
-                        <div className="lg:sticky lg:top-8">
+                    {/* AI Assistant Section - moved to the right */}
+                    <div className="lg:col-span-4 min-w-0">
+                        <div className="lg:sticky lg:top-8 overflow-hidden">
                             <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4 sm:mb-6 flex items-center">
-                                <Icons.Bot className="mr-2" size={20} sm:size={24} />
+                                <Icons.Bot className="mr-2" size={20} />
                                 AI Assistant
                             </h2>
-                            <AIPlanningAssistant />
+                            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 max-h-[calc(100vh-12rem)] overflow-y-auto">
+                                <AIPlanningAssistant />
+                            </div>
                         </div>
                     </div>
                 </div>
