@@ -186,7 +186,7 @@ const PlanDetails = () => {
                     {item.activityId && (
                       <ActivityCard 
                         activity={item.activityId} 
-                        showAddButton={false}showAddButton={false}
+                        showAddButton={false}
                       />
                     )}
                     {item.customNotes && (
