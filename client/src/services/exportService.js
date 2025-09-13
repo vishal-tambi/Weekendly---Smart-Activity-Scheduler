@@ -3,11 +3,12 @@ import jsPDF from 'jspdf';
 import QRCode from 'qrcode';
 
 class ExportService {
-  // Generate shareable link
+  // Generate shareable link with environment-based frontend URL
   generateShareableLink(planId) {
-    const baseUrl = window.location.origin;
+    const baseUrl = import.meta.env.VITE_FRONTEND_URL || window.location.origin;
     return `${baseUrl}/shared/${planId}`;
   }
+
 
   // Export plan as image
   async exportAsImage(elementId, filename = 'weekend-plan') {

@@ -8,12 +8,19 @@ const activitiesData = require('./data/activities');
 
 const app = express();
 
-// Middleware
-app.use(cors({
-  origin: 'http://localhost:5173', // Vite default port
-  credentials: true
-}));
+// CORS configuration for production
+const corsOptions = {
+  origin: [
+    'http://localhost:5173', // Vite dev server
+    process.env.FRONTEND_URL, // Production frontend URL
+  ].filter(Boolean), // Remove undefined values
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
+
 
 // Database connection
 mongoose.connect(process.env.MONGODB_URI)
