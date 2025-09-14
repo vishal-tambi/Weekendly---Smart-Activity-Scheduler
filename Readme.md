@@ -252,7 +252,7 @@ npm run build
 MIT License - see [LICENSE.md](LICENSE.md) file for details
 
 ## 👨‍💻 Developer
-Built with ❤️ by [Your Name](https://github.com/vishal-tambi)
+Built with ❤️ by [Vishal Tambi](https://github.com/vishal-tambi)
 
 ---
 **Weekendly** - Make every weekend count! 🎉
