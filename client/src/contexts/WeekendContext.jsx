@@ -114,6 +114,7 @@ export function WeekendProvider({ children }) {
       const response = await plansAPI.create(state.currentPlan);
       dispatch({ type: 'SET_CURRENT_PLAN', payload: response.data });
       loadSavedPlans();
+      dispatch({ type: 'SET_LOADING', payload: false });
     } catch (error) {
       dispatch({ type: 'SET_ERROR', payload: 'Failed to save plan' });
     }

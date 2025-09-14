@@ -3,8 +3,8 @@
 A full-stack MERN application that helps users plan perfect weekends with AI assistance, weather integration, and social sharing capabilities.
 
 ## 🚀 Live Demo
-- **Frontend**: [weekendly-app.vercel.app](https://your-app.vercel.app)
-- **Backend API**: [weekendly-api.railway.app](https://your-api.railway.app)
+- **Frontend**: (https://weekend-planner-gilt.vercel.app)
+- **Backend API**: (https://weekend-planner-w2nh.onrender.com)
 
 ## ✨ Features
 
