@@ -216,7 +216,7 @@ const LandingPage = () => {
                                 variant="outline"
                                 size="lg"
                                 onClick={() => window.open(
-                                    "https://embed.app.guidde.com/playbooks/nsNrvxDax9jXhcMKKdyahe?mode=videoAndDoc",
+                                    "https://embed.app.guidde.com/playbooks/hx1B6THsFL1iFxq9a28PZ7?mode=videoAndDoc",
                                     "_blank" // opens in a new tab
                                 )}
                                 className="text-lg px-10 py-4 border-2 border-gray-300 hover:border-primary-400 hover:bg-primary-50 transition-all duration-300"
