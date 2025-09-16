@@ -76,43 +76,31 @@ const LandingPage = () => {
         {
             name: 'Food & Dining',
             icon: 'Coffee',
-            color: 'from-orange-400 to-red-500',
-            bgColor: 'bg-gradient-to-br from-orange-50 to-red-50',
             count: '8 activities'
         },
         {
             name: 'Adventure',
             icon: 'Mountain',
-            color: 'from-green-400 to-emerald-500',
-            bgColor: 'bg-gradient-to-br from-green-50 to-emerald-50',
             count: '12 activities'
         },
         {
             name: 'Entertainment',
             icon: 'Film',
-            color: 'from-purple-400 to-violet-500',
-            bgColor: 'bg-gradient-to-br from-purple-50 to-violet-50',
             count: '15 activities'
         },
         {
             name: 'Wellness',
             icon: 'Heart',
-            color: 'from-pink-400 to-rose-500',
-            bgColor: 'bg-gradient-to-br from-pink-50 to-rose-50',
             count: '6 activities'
         },
         {
             name: 'Social',
             icon: 'Users',
-            color: 'from-blue-400 to-indigo-500',
-            bgColor: 'bg-gradient-to-br from-blue-50 to-indigo-50',
             count: '10 activities'
         },
         {
             name: 'Creative',
             icon: 'Palette',
-            color: 'from-yellow-400 to-amber-500',
-            bgColor: 'bg-gradient-to-br from-yellow-50 to-amber-50',
             count: '7 activities'
         }
     ];
@@ -144,23 +132,23 @@ const LandingPage = () => {
     return (
         <div className="min-h-screen bg-white">
             {/* Enhanced Navigation */}
-            <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-lg border-b border-gray-100 z-50">
+            <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-lg border-b border-gray-200 z-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between items-center py-4">
+                    <div className="flex justify-between items-center h-16">
                         <div className="flex items-center space-x-3">
-                            <div className="w-10 h-10 bg-gradient-to-r from-primary-600 to-purple-600 rounded-xl flex items-center justify-center">
-                                <Icons.Calendar className="text-white" size={24} />
+                            <div className="w-10 h-10 bg-primary-600 rounded-xl flex items-center justify-center shadow-soft">
+                                <Icons.Calendar className="text-white" size={22} />
                             </div>
-                            <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                            <h1 className="text-xl font-bold text-gray-900">
                                 Weekendly
                             </h1>
                         </div>
-                        <div className="flex items-center space-x-4">
+                        <div className="flex items-center space-x-3">
                             <Button variant="ghost" onClick={handleViewPlans} className="hidden sm:flex">
                                 <Icons.BookOpen className="mr-2" size={16} />
                                 My Plans
                             </Button>
-                            <Button onClick={handleGetStarted} className="bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700">
+                            <Button onClick={handleGetStarted}>
                                 Get Started
                             </Button>
                         </div>
@@ -169,47 +157,41 @@ const LandingPage = () => {
             </nav>
 
             {/* Hero Section with Enhanced Visuals */}
-            <div ref={heroRef} className="relative pt-20 pb-32 overflow-hidden">
-                {/* Animated Background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
-                    <div className="absolute inset-0 opacity-40 bg-gradient-to-r from-transparent via-white to-transparent"></div>
+            <section ref={heroRef} className="relative pt-16 pb-24 overflow-hidden">
+                {/* Simplified Background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-blue-50">
+                    <div className="absolute inset-0 opacity-30 bg-[radial-gradient(ellipse_at_top,rgba(37,99,235,0.1),transparent_50%)]"></div>
                 </div>
 
-                {/* Floating Gradient Orbs */}
-                <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full opacity-20 blur-xl animate-pulse"></div>
-                <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-r from-pink-400 to-red-500 rounded-full opacity-20 blur-xl animate-pulse delay-1000"></div>
-                <div className="absolute bottom-20 left-20 w-28 h-28 bg-gradient-to-r from-green-400 to-cyan-500 rounded-full opacity-20 blur-xl animate-pulse delay-2000"></div>
-
-                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+                <div className="relative max-w-7xl mx-auto px-6 sm:px-6 lg:px-8 pt-16">
                     <div className="text-center animate-on-scroll">
-                        <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-primary-100 to-purple-100 rounded-full text-primary-700 text-sm font-medium mb-8 animate-bounce">
+                        <div className="inline-flex items-center px-4 py-2 bg-primary-100 rounded-full text-primary-700 text-sm font-semibold mb-8">
                             <Icons.Sparkles className="mr-2" size={16} />
                             AI-Powered Weekend Planning
                         </div>
 
-                        <h1 className="text-5xl md:text-7xl font-bold mb-8">
-                            <span className="bg-gradient-to-r from-gray-900 via-primary-600 to-purple-600 bg-clip-text text-transparent">
+                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance">
+                            <span className="text-gray-900">
                                 Plan Your Perfect
                             </span>
                             <br />
-                            <span className="bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent">
+                            <span className="text-primary-600">
                                 Weekend
                             </span>
                         </h1>
 
-                        <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
+                        <p className="text-lg md:text-xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed text-balance">
                             Transform your weekends into extraordinary experiences with our intelligent planning platform.
                             Choose from 50+ curated activities, get AI-powered suggestions, and create the perfect
                             Saturday-Sunday schedule that matches your mood and energy.
                         </p>
 
-                        <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
                             <Button
                                 size="lg"
                                 onClick={handleGetStarted}
-                                className="text-lg px-10 py-4 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                             >
-                                <Icons.Rocket className="mr-3" size={20} />
+                                <Icons.Rocket className="mr-2" size={20} />
                                 Start Planning Free
                             </Button>
                             <Button
@@ -217,68 +199,66 @@ const LandingPage = () => {
                                 size="lg"
                                 onClick={() => window.open(
                                     "https://embed.app.guidde.com/playbooks/hx1B6THsFL1iFxq9a28PZ7?mode=videoAndDoc",
-                                    "_blank" // opens in a new tab
+                                    "_blank"
                                 )}
-                                className="text-lg px-10 py-4 border-2 border-gray-300 hover:border-primary-400 hover:bg-primary-50 transition-all duration-300"
                             >
-                                <Icons.Play className="mr-3" size={20} />
+                                <Icons.Play className="mr-2" size={20} />
                                 Watch Demo
                             </Button>
-
                         </div>
 
                         {/* Stats */}
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto">
                             <div className="text-center">
-                                <div className="text-3xl font-bold text-primary-600 mb-2">50+</div>
-                                <div className="text-gray-600">Curated Activities</div>
+                                <div className="text-3xl font-bold text-primary-600 mb-1">50+</div>
+                                <div className="text-gray-600 text-sm font-medium">Curated Activities</div>
                             </div>
                             <div className="text-center">
-                                <div className="text-3xl font-bold text-purple-600 mb-2">10k+</div>
-                                <div className="text-gray-600">Happy Planners</div>
+                                <div className="text-3xl font-bold text-primary-600 mb-1">10k+</div>
+                                <div className="text-gray-600 text-sm font-medium">Happy Planners</div>
                             </div>
                             <div className="text-center">
-                                <div className="text-3xl font-bold text-pink-600 mb-2">4.9★</div>
-                                <div className="text-gray-600">User Rating</div>
+                                <div className="text-3xl font-bold text-primary-600 mb-1">4.9★</div>
+                                <div className="text-gray-600 text-sm font-medium">User Rating</div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
             {/* Enhanced Activity Categories */}
-            <div className="py-20 bg-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16 animate-on-scroll">
-                        <h2 className="text-4xl font-bold text-gray-900 mb-6">
+            <section className="py-16 lg:py-20 bg-white">
+                <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12 animate-on-scroll">
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                             Discover Activities You'll <span className="text-primary-600">Love</span>
                         </h2>
-                        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto text-balance">
                             From relaxing spa days to thrilling outdoor adventures, find the perfect activities
                             for every mood and energy level
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center sm:justify-items-stretch">
                         {activityCategories.map((category, index) => {
                             const IconComponent = Icons[category.icon];
                             return (
                                 <div
                                     key={index}
-                                    className="group cursor-pointer animate-on-scroll"
+                                    className="group cursor-pointer animate-on-scroll w-full max-w-sm mx-auto sm:max-w-none sm:mx-0"
                                     style={{ animationDelay: `${index * 100}ms` }}
                                     onClick={handleGetStarted}
                                 >
-                                    <div className={`${category.bgColor} rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 transform group-hover:scale-105 border border-gray-100`}>
-                                        <div className={`w-16 h-16 bg-gradient-to-r ${category.color} rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-500`}>
-                                            <IconComponent size={32} className="text-white" />
+                                    <div className="bg-white rounded-2xl p-6 hover:shadow-large transition-all duration-300 transform group-hover:-translate-y-1 border border-gray-100 h-full text-center sm:text-left">
+                                        <div className={`w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 mx-auto sm:mx-0`}>
+                                            <IconComponent size={24} className="text-white" />
                                         </div>
-                                        <h3 className="text-xl font-bold text-gray-900 mb-2">
+                                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
                                             {category.name}
                                         </h3>
-                                        <p className="text-gray-600 mb-4">{category.count}</p>
-                                        <div className="flex items-center text-primary-600 font-medium group-hover:translate-x-2 transition-transform duration-300">
-                                            Explore <Icons.ArrowRight size={16} className="ml-2" />
+                                        <p className="text-sm text-gray-600 mb-4">{category.count}</p>
+                                        <div className="flex items-center justify-center sm:justify-start text-primary-600 font-medium text-sm group-hover:translate-x-1 transition-transform duration-300">
+                                            Explore <Icons.ArrowRight size={14} className="ml-2" />
                                         </div>
                                     </div>
                                 </div>
@@ -286,37 +266,37 @@ const LandingPage = () => {
                         })}
                     </div>
                 </div>
-            </div>
+            </section>
 
             {/* Enhanced Features Section */}
-            <div className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16 animate-on-scroll">
-                        <h2 className="text-4xl font-bold text-gray-900 mb-6">
+            <section className="py-16 lg:py-20 bg-gray-50">
+                <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12 animate-on-scroll">
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                             Why Choose <span className="text-primary-600">Weekendly?</span>
                         </h2>
-                        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto text-balance">
                             Powerful features designed to make weekend planning effortless, enjoyable, and incredibly effective
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center md:justify-items-stretch">
                         {features.map((feature, index) => {
                             const IconComponent = Icons[feature.icon];
                             return (
                                 <div
                                     key={index}
-                                    className="group animate-on-scroll"
+                                    className="group animate-on-scroll w-full max-w-sm mx-auto md:max-w-none md:mx-0"
                                     style={{ animationDelay: `${index * 150}ms` }}
                                 >
-                                    <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform group-hover:-translate-y-2 border border-gray-100">
-                                        <div className={`w-14 h-14 bg-gradient-to-r ${feature.gradient} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                                            <IconComponent size={28} className="text-white" />
+                                    <div className="bg-white rounded-2xl p-6 shadow-soft hover:shadow-medium transition-all duration-300 transform group-hover:-translate-y-1 border border-gray-100 h-full text-center md:text-left">
+                                        <div className="w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 mx-auto md:mx-0">
+                                            <IconComponent size={24} className="text-white" />
                                         </div>
-                                        <h3 className="text-xl font-bold text-gray-900 mb-4">
+                                        <h3 className="text-lg font-semibold text-gray-900 mb-3">
                                             {feature.title}
                                         </h3>
-                                        <p className="text-gray-600 leading-relaxed">
+                                        <p className="text-gray-600 leading-relaxed text-sm">
                                             {feature.description}
                                         </p>
                                     </div>
@@ -325,117 +305,117 @@ const LandingPage = () => {
                         })}
                     </div>
                 </div>
-            </div>
+            </section>
 
             {/* Testimonials Section */}
-            <div className="py-20 bg-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16 animate-on-scroll">
-                        <h2 className="text-4xl font-bold text-gray-900 mb-6">
+            <section className="py-16 lg:py-20 bg-white">
+                <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12 animate-on-scroll">
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                             Loved by <span className="text-primary-600">Thousands</span>
                         </h2>
-                        <p className="text-xl text-gray-600">
+                        <p className="text-lg text-gray-600 text-balance">
                             See what our community says about their weekend planning experience
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 justify-items-center md:justify-items-stretch">
                         {testimonials.map((testimonial, index) => (
                             <div
                                 key={index}
-                                className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 animate-on-scroll"
+                                className="bg-white rounded-2xl p-6 shadow-soft hover:shadow-medium transition-all duration-300 border border-gray-100 animate-on-scroll w-full max-w-sm mx-auto md:max-w-none md:mx-0 h-full text-center md:text-left"
                                 style={{ animationDelay: `${index * 200}ms` }}
                             >
-                                <div className="flex items-center mb-4">
+                                <div className="flex items-center justify-center md:justify-start mb-4">
                                     {[...Array(testimonial.rating)].map((_, i) => (
                                         <Icons.Star key={i} size={16} className="text-yellow-400 fill-current" />
                                     ))}
                                 </div>
-                                <p className="text-gray-700 mb-6 italic leading-relaxed">
+                                <p className="text-gray-700 mb-6 leading-relaxed text-sm">
                                     "{testimonial.content}"
                                 </p>
-                                <div className="flex items-center">
-                                    <div className="w-10 h-10 bg-gradient-to-r from-primary-400 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">
+                                <div className="flex items-center justify-center md:justify-start">
+                                    <div className="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center text-white font-semibold text-sm mr-3">
                                         {testimonial.avatar}
                                     </div>
                                     <div>
-                                        <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                                        <div className="text-gray-600 text-sm">{testimonial.role}</div>
+                                        <div className="font-semibold text-gray-900 text-sm">{testimonial.name}</div>
+                                        <div className="text-gray-600 text-xs">{testimonial.role}</div>
                                     </div>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </div>
-            </div>
+            </section>
 
             {/* Enhanced CTA Section */}
-            <div className="py-20 bg-gradient-to-r from-primary-600 via-purple-600 to-pink-600 relative overflow-hidden">
-                <div className="absolute inset-0 bg-black opacity-10"></div>
+            <section className="py-16 lg:py-20 bg-primary-600 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-primary-700"></div>
                 <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
                         Ready to Transform Your Weekends?
                     </h2>
-                    <p className="text-xl text-primary-100 mb-10 max-w-2xl mx-auto">
+                    <p className="text-lg text-primary-100 mb-8 max-w-2xl mx-auto text-balance">
                         Join thousands of happy planners who've already discovered the joy of perfectly planned weekends
                     </p>
-                    <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Button
                             size="lg"
                             onClick={handleGetStarted}
-                            className="text-lg px-10 py-4 bg-white text-primary-600 hover:bg-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+                            className="bg-white text-primary-600 hover:bg-gray-50"
                         >
-                            <Icons.Calendar className="mr-3" size={20} />
+                            <Icons.Calendar className="mr-2" size={20} />
                             Start Planning Free
                         </Button>
                         <Button
                             variant="outline"
                             size="lg"
                             onClick={handleViewPlans}
-                            className="text-lg px-10 py-4 border-2 border-white text-white hover:bg-white hover:text-primary-600 transition-all duration-300"
+                            className="border-2 border-white text-white hover:bg-white hover:text-primary-600"
                         >
-                            <Icons.Gift className="mr-3" size={20} />
+                            <Icons.Gift className="mr-2" size={20} />
                             View Sample Plans
                         </Button>
                     </div>
                 </div>
-            </div>
+            </section>
 
             {/* Enhanced Footer */}
-            <footer className="bg-gray-900 py-16">
+            <footer className="bg-gray-900 py-12">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                         <div className="col-span-1 md:col-span-2">
                             <div className="flex items-center space-x-3 mb-4">
-                                <div className="w-8 h-8 bg-gradient-to-r from-primary-400 to-purple-500 rounded-lg flex items-center justify-center">
-                                    <Icons.Calendar className="text-white" size={20} />
+                                <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
+                                    <Icons.Calendar className="text-white" size={18} />
                                 </div>
-                                <span className="text-white font-bold text-xl">Weekendly</span>
+                                <span className="text-white font-semibold text-lg">Weekendly</span>
                             </div>
-                            <p className="text-gray-400 max-w-md">
+                            <p className="text-gray-400 max-w-md text-sm leading-relaxed">
                                 The ultimate weekend planning platform. Make every weekend count with intelligent
                                 activity suggestions and seamless planning tools.
                             </p>
                         </div>
                         <div>
-                            <h4 className="text-white font-semibold mb-4">Product</h4>
-                            <ul className="space-y-2 text-gray-400">
-                                <li><a href="#" className="hover:text-white transition-colors">Features</a></li>
-                                <li><a href="#" className="hover:text-white transition-colors">Pricing</a></li>
-                                <li><a href="#" className="hover:text-white transition-colors">Mobile App</a></li>
+                            <h4 className="text-white font-semibold mb-4 text-sm">Product</h4>
+                            <ul className="space-y-2">
+                                <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a></li>
+                                <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Pricing</a></li>
+                                <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Mobile App</a></li>
                             </ul>
                         </div>
                         <div>
-                            <h4 className="text-white font-semibold mb-4">Support</h4>
-                            <ul className="space-y-2 text-gray-400">
-                                <li><a href="#" className="hover:text-white transition-colors">Help Center</a></li>
-                                <li><a href="#" className="hover:text-white transition-colors">Contact Us</a></li>
-                                <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
+                            <h4 className="text-white font-semibold mb-4 text-sm">Support</h4>
+                            <ul className="space-y-2">
+                                <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Help Center</a></li>
+                                <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Contact Us</a></li>
+                                <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a></li>
                             </ul>
                         </div>
                     </div>
-                    <div className="border-t border-gray-800 pt-8 text-center">
-                        <p className="text-gray-400">
+                    <div className="border-t border-gray-800 pt-6 text-center">
+                        <p className="text-gray-400 text-sm">
                             © 2025 Weekendly. Made by Vishal Tambi with ❤️ for weekend enthusiasts everywhere.
                         </p>
                     </div>
