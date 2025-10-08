@@ -5,7 +5,7 @@ A full-stack MERN application that helps users plan perfect weekends with AI ass
 ## 🚀 Live Demo
 - **Frontend**: (https://weekend-planner-gilt.vercel.app)
 - **Backend API**: (https://weekend-planner-w2nh.onrender.com)
-- **Video Tour**: (https://www.loom.com/share/bdc9306b87a74a1f9bfec304dc1f3d28?sid=d255776a-f206-448b-955c-6fe63c219ebe)
+  [Video Tour](https://www.loom.com/share/bdc9306b87a74a1f9bfec304dc1f3d28?sid=d255776a-f206-448b-955c-6fe63c219ebe)
 
 ## ✨ Features
 
