@@ -363,7 +363,7 @@ const LandingPage = () => {
                         <Button
                             size="lg"
                             onClick={handleGetStarted}
-                            className="bg-white text-primary-600 hover:bg-gray-50"
+                            className="bg-primary-600 text-primary-600 hover:bg-gray-50"
                         >
                             <Icons.Calendar className="mr-2" size={20} />
                             Start Planning Free
