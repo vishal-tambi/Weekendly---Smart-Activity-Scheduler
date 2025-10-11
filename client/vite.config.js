@@ -6,7 +6,7 @@ import { visualizer } from 'rollup-plugin-visualizer';
 export default defineConfig({
   plugins: [
     react(),
-    visualizer({ open: true }) // This will open the report in your browser after a build
+    visualizer({ open: false }) // This will open the report in your browser after a build
   ],
   build: {
     rollupOptions: {
