@@ -1,11 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Icons from 'lucide-react';
 import Button from '../ui/Button';
-
 const LandingPage = () => {
     const navigate = useNavigate();
-    const heroRef = useRef(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -156,15 +154,25 @@ const LandingPage = () => {
                 </div>
             </nav>
 
+
+
             {/* Hero Section with Enhanced Visuals */}
-            <section ref={heroRef} className="relative pt-16 pb-24 overflow-hidden">
-                {/* Simplified Background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-blue-50">
+            <section className="relative pt-16 pb-24 overflow-hidden">
+                <img
+                    src="/hero-bg.jpg"
+                    alt="People enjoying a weekend"
+                    aria-hidden="true"
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-blue-50 opacity-80 -z-10">
                     <div className="absolute inset-0 opacity-30 bg-[radial-gradient(ellipse_at_top,rgba(37,99,235,0.1),transparent_50%)]"></div>
                 </div>
 
                 <div className="relative max-w-7xl mx-auto px-6 sm:px-6 lg:px-8 pt-16">
+
                     <div className="text-center animate-on-scroll">
+
                         <div className="inline-flex items-center px-4 py-2 bg-primary-100 rounded-full text-primary-700 text-sm font-semibold mb-8">
                             <Icons.Sparkles className="mr-2" size={16} />
                             AI-Powered Weekend Planning
@@ -223,6 +231,7 @@ const LandingPage = () => {
                             </div>
                         </div>
                     </div>
+
                 </div>
             </section>
 
@@ -356,14 +365,14 @@ const LandingPage = () => {
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
                         Ready to Transform Your Weekends?
                     </h2>
-                    <p className="text-lg text-primary-100 mb-8 max-w-2xl mx-auto text-balance">
+                    <p className="text-lg text-primary-100 mb-8 pb-10 max-w-2xl mx-auto text-balance">
                         Join thousands of happy planners who've already discovered the joy of perfectly planned weekends
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Button
                             size="lg"
                             onClick={handleGetStarted}
-                            className="bg-white text-primary-600 hover:bg-gray-50"
+                            className="bg-primary-600 text-primary-600 hover:bg-gray-50"
                         >
                             <Icons.Calendar className="mr-2" size={20} />
                             Start Planning Free

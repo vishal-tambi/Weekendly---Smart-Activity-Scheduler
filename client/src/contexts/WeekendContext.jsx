@@ -1,8 +1,17 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import { activitiesAPI, plansAPI } from '../services/api';
+import { toast } from 'react-toastify';
 
-const WeekendContext = createContext();
+const WeekendContext = createContext();  //it's an container that will hiold all teh weekend planning data 
 
+// Helper to convert HH:mm string to minutes from midnight
+const timeToMinutes = (timeStr) => {
+  if (!timeStr || !timeStr.includes(':')) return 0;
+  const [hours, minutes] = timeStr.split(':').map(Number);
+  return hours * 60 + minutes;
+};
+
+//these are the starting pooints when you open the app
 const initialState = {
   activities: [],
   currentPlan: {
@@ -17,31 +26,34 @@ const initialState = {
   error: null,
   filters: {
     category: '',
-    mood: ''
+    mood: '',
+    search: ''
   }
 };
 
+//this is reducer that is like a command center that handles all the state changes :
 function weekendReducer(state, action) {
   switch (action.type) {
-    case 'SET_LOADING':
+    case 'SET_LOADING':  //this helps to show and hide the loading spinner
       return { ...state, loading: action.payload };
     
-    case 'SET_ERROR':
+    case 'SET_ERROR': //display eror message
       return { ...state, error: action.payload, loading: false };
     
-    case 'SET_ACTIVITIES':
+    case 'SET_ACTIVITIES': //fils the activities list form server
       return { ...state, activities: action.payload, loading: false };
     
-    case 'SET_CURRENT_PLAN':
+    case 'SET_CURRENT_PLAN': //replace the entire pan 
       return { ...state, currentPlan: action.payload };
     
-    case 'UPDATE_PLAN_FIELD':
+    case 'UPDATE_PLAN_FIELD':// changes in one files liek ttitle or theme 
       return {
         ...state,
+        
         currentPlan: { ...state.currentPlan, [action.field]: action.value }
       };
     
-    case 'ADD_ACTIVITY_TO_DAY':
+    case 'ADD_ACTIVITY_TO_DAY':  
       const { day, activity, time } = action.payload;
       return {
         ...state,
@@ -79,6 +91,7 @@ function weekendReducer(state, action) {
     case 'SET_FILTERS':
       return { ...state, filters: { ...state.filters, ...action.payload } };
     
+      
     case 'SET_SAVED_PLANS':
       return { ...state, savedPlans: action.payload };
     
@@ -101,9 +114,19 @@ export function WeekendProvider({ children }) {
   const loadActivities = async (filters = {}) => {
     try {
       dispatch({ type: 'SET_LOADING', payload: true });
-      const response = await activitiesAPI.getAll(filters);
-      dispatch({ type: 'SET_ACTIVITIES', payload: response.data });
+      const currentFilters = filters || state.filters;
+      const response = await activitiesAPI.getAll(currentFilters);
+      let activities = response.data;
+      if (currentFilters.search) {
+        const searchTerm = currentFilters.search.toLowerCase();
+        activities = activities.filter(activity =>
+          activity.name.toLowerCase().includes(searchTerm) ||
+          (activity.category && activity.category.toLowerCase().includes(searchTerm))
+        );
+      }
+      dispatch({ type: 'SET_ACTIVITIES', payload: activities });
     } catch (error) {
+      console.log(error);
       dispatch({ type: 'SET_ERROR', payload: 'Failed to load activities' });
     }
   };
@@ -116,6 +139,7 @@ export function WeekendProvider({ children }) {
       loadSavedPlans();
       dispatch({ type: 'SET_LOADING', payload: false });
     } catch (error) {
+      console.log(error)
       dispatch({ type: 'SET_ERROR', payload: 'Failed to save plan' });
     }
   };
@@ -125,11 +149,30 @@ export function WeekendProvider({ children }) {
       const response = await plansAPI.getAll();
       dispatch({ type: 'SET_SAVED_PLANS', payload: response.data });
     } catch (error) {
+      console.log(error);
       dispatch({ type: 'SET_ERROR', payload: 'Failed to load saved plans' });
     }
   };
 
   const addActivityToDay = (day, activity, time) => {
+    const newActivityStartTime = timeToMinutes(time || '09:00');
+    const newActivityDuration = (activity.duration || 1) * 60; // duration in minutes
+    const newActivityEndTime = newActivityStartTime + newActivityDuration;
+
+    for (const existing of state.currentPlan[day]) {
+      const existingStartTime = timeToMinutes(existing.startTime);
+      const existingDuration = (existing.activity.duration || 1) * 60;
+      const existingEndTime = existingStartTime + existingDuration;
+
+      // Check for overlap
+      if (newActivityStartTime < existingEndTime && newActivityEndTime > existingStartTime) {
+        const endTimeString = new Date(0, 0, 0, Math.floor(existingEndTime / 60), existingEndTime % 60)
+          .toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+        toast.warn(`This conflicts with "${existing.activity.name}" which ends at ${endTimeString}. Please schedule for a later time.`);
+        return; // Stop execution to prevent adding the activity
+      }
+    }
+
     dispatch({ type: 'ADD_ACTIVITY_TO_DAY', payload: { day, activity, time } });
   };
 
@@ -174,6 +217,7 @@ export function WeekendProvider({ children }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useWeekend() {
   const context = useContext(WeekendContext);
   if (!context) {

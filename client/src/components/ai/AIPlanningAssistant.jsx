@@ -106,7 +106,7 @@ const AIPlanningAssistant = () => {
             <Icons.CloudSun className="mr-2" size={20} />
             Weekend Weather Forecast
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             {weatherData.map((day, index) => {
               const WeatherIcon = getWeatherIcon(day.condition);
               return (
@@ -129,6 +129,7 @@ const AIPlanningAssistant = () => {
         </Card>
       )}
 
+  
       {/* AI Planning Assistant */}
       <Card className="p-6">
         <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
@@ -207,7 +208,7 @@ const AIPlanningAssistant = () => {
           </h3>
           
           <div className="space-y-3">
-            {smartSuggestions.map((activity, index) => (
+            {smartSuggestions.map((activity) => (
               <div 
                 key={activity._id} 
                 className="flex items-center justify-between p-3 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg border border-green-200"

@@ -7,27 +7,36 @@ const WEATHER_API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
 class AIService {
   constructor() {
-    // Use correct model name
-    this.model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    this.model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
   }
 
 
   // Get weather data
-  async getWeatherData(city = "Mumbai") {
-    try {
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${WEATHER_API_KEY}&units=metric`
-      );
-      const data = await response.json();
-      
-      // Get weekend weather (next Saturday and Sunday)
-      const weekendWeather = this.extractWeekendWeather(data.list);
-      return weekendWeather;
-    } catch (error) {
-      console.error('Weather API error:', error);
-      return null;
-    }
+async getWeatherData() {
+  try {
+    // Step 1: Get user's current location
+    const position = await new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+
+    const { latitude, longitude } = position.coords;
+
+    // Step 2: Fetch weather data using latitude and longitude
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${WEATHER_API_KEY}&units=metric`
+    );
+
+    const data = await response.json();
+
+    // Step 3: Extract weekend weather
+    const weekendWeather = this.extractWeekendWeather(data.list);
+    return weekendWeather;
+
+  } catch (error) {
+    console.error("Weather API error:", error);   
+    return null;
   }
+}
 
   // Extract weekend weather from forecast
   extractWeekendWeather(forecastList) {
@@ -57,6 +66,8 @@ class AIService {
     return weekend;
   }
 
+
+  
   // Smart activity suggestions based on current plan
   getSmartSuggestions(currentPlan, allActivities) {
     const suggestions = [];
@@ -327,4 +338,3 @@ Respond in JSON format:
 }
 
 export default new AIService();
-

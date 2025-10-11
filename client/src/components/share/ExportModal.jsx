@@ -14,7 +14,8 @@ const ExportModal = ({ isOpen, onClose, planData }) => {
     if (isOpen && planData) {
       initializeShareData();
     }
-  }, [isOpen, planData]);
+  }, [isOpen, planData]);  //how can you make sure that dependncy array is correct !!!
+  //why you 
 
   const initializeShareData = async () => {
     const url = exportService.generateShareableLink(planData._id);

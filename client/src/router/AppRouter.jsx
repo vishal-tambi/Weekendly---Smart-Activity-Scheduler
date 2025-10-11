@@ -10,9 +10,9 @@ import NotFound from '../components/ui/NotFound';
 
 const AppRouter = () => {
   return (
-    <Router>
-      <WeekendProvider>
-        <Routes>
+    <Router>  
+      <WeekendProvider>  
+        <Routes> 
           <Route path="/" element={<LandingPage />} />
           <Route path="/planner" element={<PlannerApp />} />
           <Route path="/plans" element={<SavedPlans />} />
